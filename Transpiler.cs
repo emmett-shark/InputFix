@@ -148,7 +148,7 @@ namespace InputFix{
             dest = (Label)matcher.Instruction.operand;
             Label label = ilGenerator.DefineLabel();
             //matcher.RemoveInstruction();
-            matcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Brfalse, label));
+            matcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Brtrue, label));
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, num9Index));
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_0));
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Bne_Un, dest));
