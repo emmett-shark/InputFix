@@ -1,11 +1,9 @@
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\InputFix.deps.json
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\InputFix.dll
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\InputFix.pdb
-C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\ASIO.NET.dll
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\Assembly-CSharp-firstpass.dll
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\Assembly-CSharp-nstrip.dll
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\BepInEx.Harmony.dll
-C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\TrombSettings.dll
 C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\netstandard2.0\UnityEngine.UI.dll
 C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\netstandard2.0\InpuxFix.csproj.AssemblyReference.cache
 C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\netstandard2.0\PluginInfo.cs

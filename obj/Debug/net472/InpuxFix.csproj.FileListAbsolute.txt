@@ -1,0 +1,15 @@
+C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\net472\InputFix.dll
+C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\net472\InputFix.pdb
+C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\net472\Assembly-CSharp-firstpass.dll
+C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\net472\Assembly-CSharp-nstrip.dll
+C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\net472\BepInEx.Harmony.dll
+C:\Users\Sebastien\TromboneChampMods\InputFix\bin\Debug\net472\UnityEngine.UI.dll
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InpuxFix.csproj.AssemblyReference.cache
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\PluginInfo.cs
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InpuxFix.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InpuxFix.AssemblyInfoInputs.cache
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InpuxFix.AssemblyInfo.cs
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InpuxFix.csproj.CoreCompileInputs.cache
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InpuxFix.csproj.CopyComplete
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InputFix.dll
+C:\Users\Sebastien\TromboneChampMods\InputFix\obj\Debug\net472\InputFix.pdb
