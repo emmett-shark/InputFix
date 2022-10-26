@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dBBMW/MuYGR5q3puJrZar9Jlg7H1st3e4dLC7/qXbr8k4n0lOJ4gi6qOAAAanGK+y8I6ED5VskixKaLCgvR3mg==",
+  "dgSpecHash": "mrij+d0XvrMwuwdqDZzhRWreZUZvsOBWPoKaayVCLDXTPduhCqPrr3tFYgBSq4kj7oGyfTNsrwucOEtYgVfeCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\InpuxFix.csproj",
+  "projectFilePath": "D:\\TromboneChampMods\\InputFix\\InpuxFix.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sebastien\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
     "C:\\Users\\Sebastien\\.nuget\\packages\\bepinex.baselib\\5.4.20\\bepinex.baselib.5.4.20.nupkg.sha512",

@@ -7,7 +7,7 @@
     <Version>1.0.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <LibraryReferenceFolder>C:\Users\Sebastien\TromboneChampMods\libs</LibraryReferenceFolder>
+    <LibraryReferenceFolder>D:\TromboneChampMods\libs</LibraryReferenceFolder>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,10 +36,6 @@
     <Reference Include="BepInEx.Harmony">
       <HintPath>$(LibraryReferenceFolder)\BepInEx.Harmony.dll</HintPath>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup Condition="Exists('lib/TrombSettings.dll')">
-    
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\InpuxFix.csproj": {}
+    "D:\\TromboneChampMods\\InputFix\\InpuxFix.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\InpuxFix.csproj": {
+    "D:\\TromboneChampMods\\InputFix\\InpuxFix.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\InpuxFix.csproj",
+        "projectUniqueName": "D:\\TromboneChampMods\\InputFix\\InpuxFix.csproj",
         "projectName": "InputFix",
-        "projectPath": "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\InpuxFix.csproj",
+        "projectPath": "D:\\TromboneChampMods\\InputFix\\InpuxFix.csproj",
         "packagesPath": "C:\\Users\\Sebastien\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\obj\\",
+        "outputPath": "D:\\TromboneChampMods\\InputFix\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Sebastien\\TromboneChampMods\\InputFix\\NuGet.Config",
-          "C:\\Users\\Sebastien\\TromboneChampMods\\NuGet.Config",
+          "D:\\TromboneChampMods\\InputFix\\NuGet.Config",
+          "D:\\TromboneChampMods\\NuGet.Config",
           "C:\\Users\\Sebastien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
