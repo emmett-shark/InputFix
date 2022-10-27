@@ -16,7 +16,7 @@ using BepInEx.Configuration;
 namespace InputFix
 {
     [HarmonyPatch]
-    [BepInPlugin("InputFix", "InputFix", "1.0.1")]
+    [BepInPlugin("InputFix", "InputFix", "1.0.2")]
     public class Plugin : BaseUnityPlugin
     {
         private void Awake(){
