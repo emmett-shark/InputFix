@@ -1,22 +1,13 @@
-using BepInEx;
-using BepInEx.Logging;
 using HarmonyLib;
-using HarmonyLib.Tools;
 using UnityEngine;
-using UnityEngine.Audio;
 using System.Collections.Generic;
-using System.Collections;
 using System.Linq;
 using System;
 using System.Reflection.Emit;
-using System.Reflection;
-using UnityEngine.Events;
-using System.IO;
-using BepInEx.Configuration;
 
 namespace InputFix{
 
-    [HarmonyPatch(typeof(GameController))]    
+    [HarmonyPatch(typeof(GameController))]
     public partial class Patches{
         private static Action<string> LogDebug = Plugin.LogDebug;
 
@@ -86,8 +77,8 @@ namespace InputFix{
 
 
 
-            //if(Input.GetMouseButton(0)) num9++;             
-            LogDebug($"Finding Instructions");
+            //if(Input.GetMouseButton(0)) num9++;
+            LogDebug($"Finding Instructions if(Input.GetMouseButton(0))");
             matcher.MatchForward(true, 
                 new CodeMatch(OpCodes.Ldloc_S),
                 new CodeMatch(OpCodes.Ldarg_0),
@@ -121,18 +112,17 @@ namespace InputFix{
 
 
             // GetMouseButtonDown(0)
-            LogDebug($"Finding Instructions");
+            LogDebug($"Finding Instructions GetMouseButtonDown(0)");
             matcher.MatchForward(true, 
                 new CodeMatch(OpCodes.Ldc_I4_0),
                 new CodeMatch(OpCodes.Call),
                 new CodeMatch(OpCodes.Ldc_I4_0),
                 new CodeMatch(OpCodes.Call),
-                new CodeMatch(OpCodes.Brfalse));
+                new CodeMatch(OpCodes.Brtrue));
             LogDebug($"Current Pos: {matcher.Pos}");
 
             matcher.Advance(-1);
             matcher.SetInstruction(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButtonDown), new Type[]{typeof(int)}));
-
 
 
             //(flag || num9 == 0)

@@ -4,7 +4,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>InputFix</AssemblyName>
     <Description>Input Fix</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <LibraryReferenceFolder>D:\TromboneChampMods\libs</LibraryReferenceFolder>
@@ -30,15 +30,13 @@
     <Reference Include="0Harmony">
       <HintPath>$(LibraryReferenceFolder)\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="BepInEx">
-      <HintPath>$(LibraryReferenceFolder)\BepInEx.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx.Harmony">
-      <HintPath>$(LibraryReferenceFolder)\BepInEx.Harmony.dll</HintPath>
-    </Reference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy $(TargetPath) &quot;$(TromboneChampDir)\BepInEx\plugins&quot;" />
+  </Target>
 </Project>
