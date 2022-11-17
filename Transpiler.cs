@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Reflection.Emit;
-
 namespace InputFix{
 
     [HarmonyPatch(typeof(GameController))]
-    public partial class Patches{
+    public partial class Patches {
         private static Action<string> LogDebug = Plugin.LogDebug;
 
         [HarmonyPatch("Update")]
@@ -76,9 +75,7 @@ namespace InputFix{
             codes.Clear();
 
 
-
-            //if(Input.GetMouseButton(0)) num9++;
-            LogDebug($"Finding Instructions if(Input.GetMouseButton(0))");
+            LogDebug($"if (Input.GetMouseButton(0) || Input.GetMouseButton(1)) num9++;");
             matcher.MatchForward(true, 
                 new CodeMatch(OpCodes.Ldloc_S),
                 new CodeMatch(OpCodes.Ldarg_0),
@@ -89,18 +86,25 @@ namespace InputFix{
 
             matcher.Advance(1);
 
-            //if(Input.GetMouseButton(0))
-            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_0));
-            matcher.InsertAndAdvance(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButton), new Type[]{typeof(int)}));
             Label label1 = ilGenerator.DefineLabel();
-            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse, label1));
+            Label label2 = ilGenerator.DefineLabel();
+            //Input.GetMouseButton(0)
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_0));
+            matcher.InsertAndAdvance(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButton), new Type[] { typeof(int) }));
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Brtrue, label1));
+
+            //Input.GetMouseButton(1)
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_1));
+            matcher.InsertAndAdvance(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButton), new Type[] { typeof(int) }));
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse, label2));
 
             //num9++
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, num9Index));
+            matcher.AddLabelsAt(matcher.Pos - 1, new List<Label> { label1 });
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_1));
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Add));
             matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Stloc_S, num9Index));
-            matcher.AddLabels(new List<Label>(){label1});
+            matcher.AddLabels(new List<Label> { label2 });
 
 
 
@@ -111,18 +115,23 @@ namespace InputFix{
 
 
 
-            // GetMouseButtonDown(0)
-            LogDebug($"Finding Instructions GetMouseButtonDown(0)");
-            matcher.MatchForward(true, 
+            LogDebug($"Changing GetMouseButton(0) -> GetMouseButtonDown(0)");
+            matcher.MatchForward(true,
                 new CodeMatch(OpCodes.Ldc_I4_0),
-                new CodeMatch(OpCodes.Call),
-                new CodeMatch(OpCodes.Ldc_I4_0),
-                new CodeMatch(OpCodes.Call),
+                new CodeMatch(OpCodes.Call, name: nameof(Input.GetMouseButton)),
                 new CodeMatch(OpCodes.Brtrue));
             LogDebug($"Current Pos: {matcher.Pos}");
-
             matcher.Advance(-1);
-            matcher.SetInstruction(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButtonDown), new Type[]{typeof(int)}));
+            matcher.SetInstruction(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButtonDown), new Type[] { typeof(int) }));
+
+            LogDebug($"Changing GetMouseButton(1) -> GetMouseButtonDown(1)");
+            matcher.MatchForward(true,
+                new CodeMatch(OpCodes.Ldc_I4_1),
+                new CodeMatch(OpCodes.Call, name: nameof(Input.GetMouseButton)),
+                new CodeMatch(OpCodes.Brfalse));
+            LogDebug($"Current Pos: {matcher.Pos}");
+            matcher.Advance(-1);
+            matcher.SetInstruction(CodeInstruction.Call(typeof(Input), nameof(Input.GetMouseButtonDown), new Type[] { typeof(int) }));
 
 
             //(flag || num9 == 0)
