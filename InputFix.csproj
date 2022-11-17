@@ -4,7 +4,7 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>InputFix</AssemblyName>
     <Description>Input Fix</Description>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <LibraryReferenceFolder>D:\TromboneChampMods\libs</LibraryReferenceFolder>
@@ -29,12 +29,6 @@
     </Reference>
     <Reference Include="0Harmony">
       <HintPath>$(LibraryReferenceFolder)\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx">
-      <HintPath>$(LibraryReferenceFolder)\BepInEx.dll</HintPath>
-    </Reference>
-    <Reference Include="BepInEx.Harmony">
-      <HintPath>$(LibraryReferenceFolder)\BepInEx.Harmony.dll</HintPath>
     </Reference>
   </ItemGroup>
   

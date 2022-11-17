@@ -1,22 +1,11 @@
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.Audio;
-using System.Collections.Generic;
-using System.Collections;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Reflection;
-using UnityEngine.Events;
-using System.IO;
-using BepInEx.Configuration;
 
 namespace InputFix
 {
     [HarmonyPatch]
-    [BepInPlugin("InputFix", "InputFix", "1.0.2")]
+    [BepInPlugin("InputFix", "InputFix", "1.0.3")]
     public class Plugin : BaseUnityPlugin
     {
         private void Awake(){
