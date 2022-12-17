@@ -155,9 +155,7 @@ namespace InputFix{
 
 
             //remove !noteplaying
-            matcher.MatchForward(true, 
-                new CodeMatch(OpCodes.Div),
-                new CodeMatch(OpCodes.Pop),
+            matcher.MatchForward(true,
                 new CodeMatch(OpCodes.Ldloc_S),
                 new CodeMatch(OpCodes.Brfalse),
                 new CodeMatch(OpCodes.Ldarg_0));

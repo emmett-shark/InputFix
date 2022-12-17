@@ -5,12 +5,12 @@ using HarmonyLib;
 namespace InputFix
 {
     [HarmonyPatch]
-    [BepInPlugin("InputFix", "InputFix", "1.0.3")]
+    [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
     {
         private void Awake(){
             Instance = this;
-            new Harmony("InputFix").PatchAll();
+            new Harmony(PluginInfo.PLUGIN_GUID).PatchAll();
         }
         public static void LogDebug(string message){
             Instance.Log(LogLevel.Debug, message);
