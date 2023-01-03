@@ -4,10 +4,9 @@
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>InputFix</AssemblyName>
     <Description>Input Fix</Description>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-    <LibraryReferenceFolder>D:\TromboneChampMods\libs</LibraryReferenceFolder>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,19 +15,16 @@
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
     <PackageReference Include="UnityEngine.Modules" Version="2019.3.11" IncludeAssets="compile" />
     <Reference Include="Assembly-CSharp-nstrip">
-      <HintPath>$(LibraryReferenceFolder)\Assembly-CSharp-nstrip.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>$(LibraryReferenceFolder)\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>$(TromboneChampDir)\TromboneChamp_Data\Managed\Assembly-CSharp-nstrip.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(LibraryReferenceFolder)\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(TromboneChampDir)\TromboneChamp_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>$(LibraryReferenceFolder)\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(TromboneChampDir)\TromboneChamp_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="0Harmony">
-      <HintPath>$(LibraryReferenceFolder)\0Harmony.dll</HintPath>
+      <HintPath>$(TromboneChampDir)\TromboneChamp_Data\Managed\0Harmony.dll</HintPath>
     </Reference>
   </ItemGroup>
   
@@ -37,6 +33,6 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(LibraryReferenceFolder)/BepInEx/plugins" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(TromboneChampDir)/BepInEx/plugins" />
   </Target>
 </Project>
