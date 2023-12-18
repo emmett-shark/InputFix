@@ -2,4 +2,8 @@
 A mod for Trombone Champ to slightly change how input works.
 
 ## Installation instructions
-Download the .dll from the release and put it into your BepInEx plugins folder.
+Install this from r2modman https://trombone-champ.thunderstore.io/package/emmett/InputFix/
+
+## Changelog
+v1.0.6
+- Respect the "disable mouse tooting" setting

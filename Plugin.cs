@@ -16,8 +16,6 @@ public class Plugin : BaseUnityPlugin
         new Harmony(PluginInfo.PLUGIN_GUID).PatchAll();
     }
 
-    public static void LogDebug(string message) => Log.LogDebug(message);
-
     public static Plugin Instance;
     public static ManualLogSource Log;
     
@@ -27,10 +25,12 @@ public class Plugin : BaseUnityPlugin
         [HarmonyPatch(nameof(GameController.isNoteButtonPressed))]
         public static bool Prefix(GameController __instance, ref bool __result)
         {
-            bool isKeyDown = Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) ||
-                (Input.anyKeyDown && __instance.toot_keys.Any(key => Input.GetKeyDown(key)));
-            __result = !isKeyDown && (Input.GetMouseButton(0) || Input.GetMouseButton(1) ||
-                (Input.anyKey && __instance.toot_keys.Any(key => Input.GetKey(key))));
+            bool disableMouseTooting = GlobalVariables.localsettings.disable_mouse_tooting;
+            bool isMouseDown = !disableMouseTooting && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1));
+            bool isKeyDown = isMouseDown || (Input.anyKeyDown && __instance.toot_keys.Any(key => Input.GetKeyDown(key)));
+
+            bool isMousePress = !disableMouseTooting && (Input.GetMouseButton(0) || Input.GetMouseButton(1));
+            __result = !isKeyDown && (isMousePress || (Input.anyKey && __instance.toot_keys.Any(key => Input.GetKey(key))));
             if (__result && !__instance.quitting && !__instance.enteringlyrics && __instance.curtainc.controller_ready_state == 1)
             {
                 __instance.curtainc.controller_ready_state = 2;
@@ -41,4 +41,3 @@ public class Plugin : BaseUnityPlugin
         }
     }
 }
-
