@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using BepInEx;
 using BepInEx.Logging;
@@ -22,15 +23,19 @@ public class Plugin : BaseUnityPlugin
     [HarmonyPatch(typeof(GameController))]
     public static class Patches
     {
+        private static bool previousFrameTooting = false;
         [HarmonyPatch(nameof(GameController.isNoteButtonPressed))]
         public static bool Prefix(GameController __instance, ref bool __result)
         {
-            bool disableMouseTooting = GlobalVariables.localsettings.disable_mouse_tooting;
-            bool isMouseDown = !disableMouseTooting && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1));
-            bool isKeyDown = isMouseDown || (Input.anyKeyDown && __instance.toot_keys.Any(key => Input.GetKeyDown(key)));
+            bool enableMouseTooting = !GlobalVariables.localsettings.disable_mouse_tooting;
+            bool isMouseDown = enableMouseTooting && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1));
+            bool isMouse = enableMouseTooting && (Input.GetMouseButton(0) || Input.GetMouseButton(1));
 
-            bool isMousePress = !disableMouseTooting && (Input.GetMouseButton(0) || Input.GetMouseButton(1));
-            __result = !isKeyDown && (isMousePress || (Input.anyKey && __instance.toot_keys.Any(key => Input.GetKey(key))));
+            bool isKeyDown = Input.anyKeyDown && __instance.toot_keys.Any(key => Input.GetKeyDown(key));
+            bool isKey = Input.anyKey && __instance.toot_keys.Any(key => Input.GetKey(key));
+
+            __result = (!(isMouseDown || isKeyDown) || !previousFrameTooting) && (isMouse || isKey);
+            previousFrameTooting = isKey;
             if (__result && !__instance.quitting && !__instance.enteringlyrics && __instance.curtainc.controller_ready_state == 1)
             {
                 __instance.curtainc.controller_ready_state = 2;
